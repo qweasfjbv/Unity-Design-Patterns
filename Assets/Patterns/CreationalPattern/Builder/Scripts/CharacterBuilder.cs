@@ -1,7 +1,7 @@
 
 namespace Patterns.CreationalPatterns.Builder
 {
-	public class CharacterBuilder
+	public class Character
 	{
 		private string name;
 		private int level;
@@ -9,6 +9,33 @@ namespace Patterns.CreationalPatterns.Builder
 		private int maxMP;
 		private int attack;
 		private int defense;
+		public Character(CharacterBuilder builder)
+		{
+			name = builder.Name;
+			level = builder.Level;
+			maxHP = builder.MaxHP;
+			maxMP = builder.MaxMP;
+			attack = builder.Attack;
+			defense = builder.Defense;
+		}
+
+	}
+
+	public class CharacterBuilder
+	{
+		private string name = "Default";
+		private int level = 10;
+		private int maxHP = 10;
+		private int maxMP = 10;
+		private int attack = 10;
+		private int defense = 10;
+
+		public string Name => name;
+		public int Level => level;
+		public int MaxHP => maxHP;
+		public int MaxMP => maxMP;
+		public int Attack => attack;
+		public int Defense => defense;
 
 		public CharacterBuilder SetName(string name)
 		{
@@ -40,11 +67,15 @@ namespace Patterns.CreationalPatterns.Builder
 			return this;
 		}
 
-		public CharacterBuilder setDefense(int defense)
+		public CharacterBuilder SetDefense(int defense)
 		{
 			this.defense = defense;
 			return this;
 		}
 
+		public Character Build()
+		{
+			return new Character(this);
+		}
 	}
 }

@@ -7,29 +7,15 @@ namespace Patterns.CreationalPatterns.Factory
 	{
 		[SerializeField] private ModelType modelType;
 
-		private FactoryBase factory;
+		private FactoryBase[] factory;
 		private ModelBase model;
 
 		private void Start()
 		{
-			switch (modelType)
-			{
-				case ModelType.Sphere:
-					factory = new SphereFactory();
-					break;
-				case ModelType.Cube:
-					factory = new CubeFactory();
-					break;
-				case ModelType.Cylinder:
-					factory = new CylinderFactory();
-					break;
-			}
-
-			if(factory == null)
-			{
-				Debug.LogError("Factory Main : modelType is Invalid");
-				return;
-			}
+			factory = new FactoryBase[3];
+			factory[0] = new SphereFactory();
+			factory[1] = new CubeFactory();
+			factory[2] = new CylinderFactory();
 
 			Debug.Log("Press Space bar");
 		}
@@ -38,7 +24,7 @@ namespace Patterns.CreationalPatterns.Factory
 		{
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				model = factory.CreateModelObject();
+				model = factory[(int)modelType].CreateModelObject();
 				model.LogModelName();
 			}
 		}

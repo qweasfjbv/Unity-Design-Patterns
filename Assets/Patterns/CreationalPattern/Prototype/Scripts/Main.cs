@@ -1,4 +1,3 @@
-using Patterns.CreationalPatterns.Prototype;
 using UnityEngine;
 
 namespace Patterns.CreationalPatterns.Prototype

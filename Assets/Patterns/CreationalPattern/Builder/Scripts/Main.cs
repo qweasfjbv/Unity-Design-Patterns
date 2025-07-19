@@ -7,13 +7,13 @@ namespace Patterns.CreationalPatterns.Builder
 		private void Start()
 		{
 			CharacterBuilder builder = new CharacterBuilder();
-
-			builder.SetName("character")
+			Character character = builder.SetName("character")
 				.SetLevel(10)
 				.SetMaxHP(100)
 				.SetMaxMP(20)
 				.SetAttack(10)
-				.setDefense(5);
+				.SetDefense(5)
+				.Build();
 		}
 	}
 }
