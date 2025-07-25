@@ -10,7 +10,7 @@
 ```cs
 // 코드가 쓸데없이 길어지며, AClass 내부 구조가 바뀌면 해당 코드도 바뀌어야 한다.
 AClass class1 = new AClass(1, 2, 3, ...);   
-AClass class2 = new AClass(class1.val1, class2.val2, class3.val3, ...);
+AClass class2 = new AClass(class1.val1, class1.val2, class1.val3, ...);
 ```
 
 또한 private 변수의 경우에는 위와 같은 방식으로 복제할 수 없습니다.
